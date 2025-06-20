@@ -7,21 +7,21 @@ Este script en Python crea automáticamente la estructura de carpetas para organ
 Cuando ejecutas el script, se te pide un año (por ejemplo, `2025`) y se genera la siguiente estructura:
 
 ```
-Fondos/
-└── 2025/
-├── Q1/
+Fondos;
+└── 2025;
+├── Q1;
 │ ├── 01.Enero
 │ ├── 02.Febrero
 │ └── 03.Marzo
-├── Q2/
+├── Q2;
 │ ├── 04.Abril
 │ ├── 05.Mayo
 │ └── 06.Junio
-├── Q3/
+├── Q3;
 │ ├── 07.Julio
 │ ├── 08.Agosto
 │ └── 09.Septiembre
-└── Q4/
+└── Q4;
 ├── 10.Octubre
 ├── 11.Noviembre
 └── 12.Diciembre
