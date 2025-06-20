@@ -1,0 +1,43 @@
+import os
+
+#Preguntar el año al usuario
+año_nuevo = input("Introduce el año para crear la estructura de carpetas (ej: 2025): ").strip()
+
+#Validar que el año ingresado tenga 4 dígitos numéricos
+if not (año_nuevo.isdigit() and len(año_nuevo) == 4):
+    print("Año no válido. Debe ser un número de 4 dígitos (ej: 2025).")
+    exit()
+
+#Ruta raíz donde se encuentra la carpeta "Fondos"
+ruta_base = "Fondos"
+
+#Ruta completa del año
+ruta_año = os.path.join(ruta_base, año_nuevo)
+
+#Verificar si ya existe la carpeta del año
+if os.path.exists(ruta_año):
+    respuesta = input(f"La carpeta del año {año_nuevo} ya existe. ¿Quieres continuar y crear las subcarpetas que falten? (yes/no): ").strip().lower()
+    if respuesta != 'yes':
+        print("Operación cancelada.")
+        exit()
+
+#Estructura de carpetas
+estructura = {
+    "Q1": ["01.Enero", "02.Febrero", "03.Marzo"],
+    "Q2": ["04.Abril", "05.Mayo", "06.Junio"],
+    "Q3": ["07.Julio", "08.Agosto", "09.Septiembre"],
+    "Q4": ["10.Octubre", "11.Noviembre", "12.Diciembre"]
+}
+
+#Crear carpeta del año si no existe
+os.makedirs(ruta_año, exist_ok=True)
+
+#Crear carpetas trimestrales y mensuales
+for trimestre, meses in estructura.items():
+    ruta_trimestre = os.path.join(ruta_año, trimestre)
+    os.makedirs(ruta_trimestre, exist_ok=True)
+    for mes in meses:
+        ruta_mes = os.path.join(ruta_trimestre, mes)
+        os.makedirs(ruta_mes, exist_ok=True)
+
+print(f"Estructura del año {año_nuevo} creada o completada correctamente en la carpeta '{ruta_base}'.")
